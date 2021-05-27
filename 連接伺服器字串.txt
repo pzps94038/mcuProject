@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=(local)\SQLEXPRESS;Initial Catalog=Order;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context ApIEmployeeDbContext -force -DataAnnotation
