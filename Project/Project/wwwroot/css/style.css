@@ -1,0 +1,106 @@
+
+h1,h2,h3,h4,h5,h6{
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight:bold
+}
+
+p,a,textarea,input,label,li,ul{
+
+    font-family: 'Open Sans ', sans-serif;
+
+}
+
+div{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+span{
+    line-height:30px;
+    font-family:'Microsoft JhengHei';
+    font-weight:bold;
+
+}
+
+.btn{
+    /* 整個網站的按鍵都是同樣的規格 */
+    background-color: rgb(15, 110, 110);
+    color: aliceblue;
+    padding: 10px, 20px;
+    border-radius: 15px;
+    margin-top:5px;
+}
+.btn_ensure:hover{
+    background-color: white;
+}
+
+#third{
+
+    padding:80px 0px;
+    background-color: rgb(248,248,248);
+}
+
+#third h3{
+    
+    margin-bottom:80px;
+
+}
+
+/* 圖片通常都會設定最大寬度為100% :是依照container 或是 切割後的col大小 */
+img{
+    max-width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+
+ #third .upper{
+
+    position: relative;
+
+} 
+
+#third h6{
+
+    background-color: rgb(94, 117, 117);
+    color: aliceblue;
+    /* 字邊寬 */
+    font-weight: 800;
+    margin-top: 6px;
+}
+
+
+#third .lower h5{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+/* 讓icon和文字分開一點 */
+#third .lower i{
+    margin-left: 10px;
+
+}
+/* 幫整個card加上陰影 */
+#third .outer{
+    background: white;
+    box-shadow: 2px 2px 8px 0 rgb(94, 117, 117, 0.8);
+
+}
+#third .lower{
+
+    padding:10px 15px;
+}
+
+/* 刪掉所有a 超連結的屬性，就是自己重新定義 */
+#third a{
+
+    color:black;
+
+}
+/* 滑過的時候會有底線，要刪掉> 把文字裝飾設為none */
+#third a:hover{
+
+    text-decoration:none;
+
+}

@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Project.Areas.Identity.Data
+@inject SignInManager<ProjectUser> SignInManager
+@inject UserManager<ProjectUser> UserManager
+@{
+    ViewData["Title"] = "歷史訂單";
+    Layout = "_OrderDetails";
+}
+<div class="wrap">
+    <img src="/image/Product.jpg" alt="product">
+    <label style="display:none;" for="userId"></label>
+    <input type="text" style="display:none;" value="@UserManager.GetUserId(User)" id="userId" readonly />
+    <h3 class="OrderDetailsTitle">歷史訂單</h3>
+    <div class="table-responsive">
+        <table class="table table-hover table-dark OrderDetailsTable">
+            <thead>
+                <tr class=" OrderDetails">
+                    <th scope="col">訂單編號</th>
+                    <th scope="col" class="table_none">訂單日期</th>
+                    <th scope="col">收貨人姓名</th>
+                    <th scope="col" class="table_twonone">收貨人地址</th>
+                    <th scope="col" class="table_none">收貨人電話</th>
+                    <th scope="col" class="table_none">付款方式</th>
+                    <th scope="col" class="table_none">來店預定日期</th>
+                    <th scope="col">產品名稱</th>
+                    <th scope="col" class="table_none">數量</th>
+                    <th scope="col">訂單金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="item in showDetailsData">
+                    <tr class=" OrderDetails">
+                        <th scope="row">{{item.orderId}}</th>
+                        <td class="table_none">{{item.orderDate}}</td>
+                        <td>{{item.memberName}}</td>
+                        <td class="table_twonone">{{item.address}}</td>
+                        <td class="table_none">{{item.phone}}</td>
+                        <td class="table_none">{{item.paymentMethod}}</td>
+                        <td class="table_none">{{item.pickUpAtTheStoreDate}}</td>
+                        <td>
+                            <p v-for="i in item.productName.split('&')">{{i}}</p>
+
+                        </td>
+                        <td class="table_none">
+                            <p v-for="i in item.quantity.split('&')">{{i}}個</p>
+                        </td>
+                        <td>{{item.totalPrice}}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table> 
+        <div style="float:right">
+            <input type="button" class="btn btn-primary" value="上一頁" v-on:click="dissplayDetailLess" :disabled="this.page <=1" />
+            <input type="button" class="btn btn-primary" value="下一頁 " v-on:click="dissplayDetailADD" :disabled="this.page >= this.maxapage" />
+        </div>
+    </div>
+   
+</div>

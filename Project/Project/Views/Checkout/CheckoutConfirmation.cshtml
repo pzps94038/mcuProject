@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Project.Areas.Identity.Data
+@inject SignInManager<ProjectUser> SignInManager
+@inject UserManager<ProjectUser> UserManager
+@{
+    ViewData["Title"] = "確認結帳";
+    Layout = "_CheckoutConfirmation";
+}
+<label style="display:none;" for="userId"></label>
+<input type="text" style="display:none;" value="@UserManager.GetUserId(User)" id="userId" readonly />
+<label style="display:none;" for="userEmail"></label>
+<input type="text" style="display:none;" value="@UserManager.GetUserName(User)" id="userEmail" readonly />
+<div class="wrap">
+    <img src="/image/Product.jpg" alt="product">
+    <div class="col-md-12 text-center">
+        <span class="icon-check_circle display-3 text-success"></span>
+        <h3 class="display-4 text-dark font-weigh-bold productTitle">結帳頁面</h3>
+        <p class="display-5 text-danger">請確認您的基本資料及商品 必要時請截圖或照相保存</p>
+    </div>    
+    <form asp-action="Complete" asp-controller="Checkout">
+        <table class="table table-dark table-striped productTable">
+            <thead>
+                <tr>
+                    <th scope="col">產品名稱</th>
+                    <th scope="col">產品數量</th>
+                    <th scope="col" class="text-right">產品金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="product in carts">
+                    <tr>
+                        <td class='align-middle font-weight-bold'>{{product.Name}}</td>
+                        <td class='align-middle font-weight-bold'>{{product.Amount}}個</td>
+                        <td class='text-right align-middle font-weight-bold'>${{product.Price*product.Amount}}</td>
+                    </tr>
+                </template>
+            </tbody>
+            <tfoot>
+            <td class="font-weight-bold text-danger">總計</td>
+            <td></td>
+            <td class="text-right font-weight-bold text-danger">${{total}}</td>
+            </tfoot>
+        </table>
+        <table class="table table-dark table-striped productTable">
+            <tbody>
+                <tr>
+                    <th><label for="username">收件人姓名</label></th>
+                    <td><input type="text" v-model="username" name="username" style="font-family: FontAwesome;" required placeholder="&#xf007; 請輸入收貨人姓名" /></td>
+                </tr>
+                <tr>
+                    <th><label for="phone">收件人電話</label></th>
+                    <td><input type="tel" v-model="phone" name="phone" style="font-family: FontAwesome;" required placeholder="&#xf098; 請輸入收貨人電話" /></td>
+                </tr>
+                <tr>
+                    <th><label for="address">地址</label></th>
+                    <td><input type="text" id="address" name="address" v-model="address" style="font-family: FontAwesome;" required placeholder="&#xf1fe; 請輸入地址" /></td>
+                </tr>
+                <tr>
+                    <th><label for="PaymentMethod" id="PaymentMethod">付款方式</label></th>
+                    <td>
+                        <select name="PaymentMethod" id="PaymentMethod" v-model="PaymentMethod">
+                            <option value="CashOnDelivery">貨到付款</option>
+                            <option value="CreditCardTransfer">信用卡轉帳</option>
+                            <option value="PickUpAtTheStore">來店預定</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr v-if="PaymentMethod == 'PickUpAtTheStore'">
+                    <th>
+                        <label for="PickUpAtTheStoreDate">來店日期</label>
+                    </th>
+                    <td>
+                        <input type="date" v-model="PickUpAtTheStoreDate" name="PickUpAtTheStoreDate" />
+                    </td>
+                </tr>
+                <tr v-else-if="PaymentMethod == 'CreditCardTransfer'">
+                    <th>
+                        <label for="card">信用卡資訊</label>
+                    </th>
+                    <td>
+                        <input type="text" name="card" placeholder="請輸入卡號" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>付款狀態</th>
+                    <td><span class="text-danger">尚未付款</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center mx-auto">
+            <button type="submit" asp-action="Complete" asp-controller="Checkout" class="btn btn-danger btn-lg m-5" v-on:click="Complete">確認付款去</button>
+        </div>
+    </form>
+</div>

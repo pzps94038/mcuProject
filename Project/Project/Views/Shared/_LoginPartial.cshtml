@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Project.Areas.Identity.Data
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a id="manage">你好 @UserManager.GetUserName(User)!</a>
+    </li>
+    <li>
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-action="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit">登出</button>
+        </form>
+    </li>
+}
+else
+ {
+    <li>
+        <a id="register" href="/identity/Account/Register">註冊</a>
+    </li>
+    <li>
+        <a id="login" asp-area="Identity" asp-page="/Account/Login">登入</a>
+    </li>
+}
+</ul>

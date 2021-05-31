@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "結帳明細";
+    Layout = "_Checkout";
+}
+<div class="wrap">
+    <img src="/image/Product.jpg" alt="product">
+    <form asp-action="CheckoutConfirmation" asp-controller="Checkout">
+        <div class="products_item">
+            <table v-if="cartsLen" class="table table-active table-striped product_all">                
+                <tr class="product">
+                    <th class="productNoneImg">商品圖片</th>
+                    <th>產品名稱</th>                   
+                    <th class="productNoneCost">單價</th>
+                    <th>數量</th>
+                    <th>總金額</th>
+                    <th>刪除</th>
+                </tr>                                
+                <template v-for="(item,key) in carts">
+                    <tr class="product_body">
+                        <td class="productNoneImg">    
+                            <a :href=`/Home/ProductMore/?id=${item.id}` target="_blank" class="productImg">
+                                    <img :src="item.Img">
+                            </a>
+                        </td>
+                        <td>
+                            {{item.Name}}
+                        </td>                        
+                        <td class="productNoneCost">
+                            {{item.Price}}
+                           
+                        </td>
+                        <td>
+                            <div class="input-group btn_box">
+                                <div class="input-group-prepend btn_box_none">
+                                    <button type="button" class="btn btn-info js-btn-minus" v-on:click="less(key)">−</button>
+                                </div>
+                                <input type="number"
+                                       aria-label="Example text with button addon" aria-describedby="button-addon1" class="form-control text-center" min="1" v-model="item.Amount" required v-on:change="changeAmount(key)">
+                                <div class="input-group-append btn_box_none">
+                                    <button type="button" class="btn btn-info js-btn-plus" v-on:click="add(key)">+</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {{item.Price*item.Amount}}
+                        </td>
+                        <td>
+                            <button type="button"  class="btn btn-danger" v-on:click="removeCart(key)">刪除</button>
+                        </td>
+                    </tr>
+                </template>                                 
+            </table>
+            <div v-else="cartsLen" class="noPorducts">
+                <h3>Oops!購物車沒有任何商品</h3>
+                <i class="fas fa-sad-cry"></i>
+               
+                <a asp-action="Index" asp-controller="Home" class="btn btn-warning">現在回去逛逛!</a>                 
+            </div>
+        </div>
+        <div class="go" v-if="cartsLen">            
+            <p>總金額<span id="total">{{total}}元</span></p>            
+            <button type="submit" class="btn btn-primary":disabled="!cartsLen">前往結帳</button>
+        </div>   
+       
+    </form>
+</div>

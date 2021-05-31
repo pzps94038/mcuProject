@@ -1,0 +1,42 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "註冊";
+    Layout = "_SignUp";
+}
+
+<div class="wrap">
+    <div class="SignUp_wrap">
+        <h2 class="account_title">建立你的帳戶</h2>        
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="m-2 form-group">
+                <label asp-for="Input.Name" class="font-weight-bold SignUp_label"></label>
+                <input asp-for="Input.Name"  class="form-control" style="font-family: FontAwesome;" placeholder='&#xf007; 請輸入姓名'/>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="m-2 form-group">
+                <label asp-for="Input.Email" class="font-weight-bold SignUp_label"></label>
+                <input asp-for="Input.Email"  class="form-control" style="font-family: FontAwesome;" placeholder='&#xf0e0; 請輸入電子郵件'/>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="m-2 form-group">
+                <label asp-for="Input.Password" class="font-weight-bold SignUp_label"></label>
+                <input asp-for="Input.Password" style="font-family: FontAwesome;" class="form-control" placeholder="&#xf023; 請輸入密碼"/>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="m-2 form-group">
+                <label asp-for="Input.ConfirmPassword" class="font-weight-bold SignUp_label"></label>
+                <input asp-for="Input.ConfirmPassword" style="font-family: FontAwesome;" class="form-control" placeholder="&#xf023; 確認密碼"/>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="m-2 form-group d-flex justify-content-end">
+                <input type="reset" name="reset" value="重新輸入" class="btn btn-light m-2" />
+                <button type="submit" class="btn btn-info m-2">註冊</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

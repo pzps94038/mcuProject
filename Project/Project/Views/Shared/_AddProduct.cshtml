@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Project.Areas.Identity.Data
+@inject SignInManager<ProjectUser> SignInManager
+@inject UserManager<ProjectUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ico圖片 -->
+    <link rel="shortcut icon" href="~/image/blackCat.ico">
+    <!-- JQuery -->
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Css -->
+    <link href="~/css/AddProduct.css" rel="stylesheet" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="header">
+        <a asp-action="index" asp-controller="Home">
+            <img src="https://upload.cc/i1/2021/04/29/nzI4rv.png" alt="logo">
+            <h1>CatBakery</h1>
+            <h2>@ViewData["Title"]</h2>
+        </a>       
+    </div>
+    @RenderBody()
+    <div class="footer">
+        <h2>僅練習使用．不做商業用途</h2>
+    </div>
+    <script src="~/js/AddProduct.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

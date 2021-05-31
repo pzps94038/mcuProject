@@ -1,0 +1,136 @@
+/* CssReset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;   
+}
+/* body */
+body {
+    background-color: #EFE9E7;
+    font-weight: 500;
+}
+/*header*/
+.header {
+    background: black;
+    height: 60px;
+}
+.header a {
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    float:left;
+}
+.header a h1 {
+    padding-top: 5px;
+    font-size: 30px;
+    color: #FFFFFF;
+}
+.header a h2 {     
+    margin-left:5px;
+    padding-top: 10px;
+    font-size: 24px;
+    color: #FFFFFF;    
+}
+.header a img {
+    padding-left: 10px;
+    height: 50px;
+    padding-top: 8px;
+}
+/*wrap*/
+.wrap {
+    min-height:1000px;
+    background-image:url('/image/Sign.jpg');
+    background-size:cover;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+.SignUp_wrap {    
+    width: 30%;
+    margin: 0 auto;    
+    background-color: #EFE9E7;
+    border-radius:10px 10px;
+}
+@media(max-width:1200px) {
+    .SignUp_wrap {
+        width:50%;
+    }
+}
+@media(max-width:768px) {
+    .SignUp_wrap {
+        width: 80%;
+    }
+}
+.SignUp_label{
+    font-size:18px;
+}
+.account_title {
+    text-align: center;
+    padding: 5px;
+    font-size: 30px;
+    font-weight: 700;
+    color:darkblue;
+}
+.btn_box {
+    display: flex;
+    justify-content: flex-end;
+}
+/*footer*/
+.footer h2 {
+    text-align: center;
+    padding: 10px;
+    background-color: #3f0303;
+    color: white;
+}

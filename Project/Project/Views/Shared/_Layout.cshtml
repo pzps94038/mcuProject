@@ -1,0 +1,83 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Project.Areas.Identity.Data
+@inject SignInManager<ProjectUser> SignInManager
+@inject UserManager<ProjectUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ico圖片 -->
+    <link rel="shortcut icon" href="~/image/blackCat.ico">
+    <!-- JQuery -->
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+    <!-- parallax -->
+    <script src="~/js/parallax.min.js"></script>
+    <!-- map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Smtp -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_B9Ycvag8HmJ4pM2hwYTIj");
+        })();
+    </script>
+    <!-- Css -->
+    <link rel="stylesheet" href="~/css/index.css">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="header">
+        <a asp-action="index" asp-controller="Home">
+            <img src="https://upload.cc/i1/2021/04/29/nzI4rv.png" alt="logo">
+            <h1>CatBakery</h1>
+        </a>
+        <ul class="nav_menu">
+            <li><a target="_blank" asp-action="Products" asp-controller="Home" asp-route-id="Cake">蛋糕</a></li>
+            <li><a target="_blank" asp-action="Products" asp-controller="Home" asp-route-id="Dessert">甜點</a></li>
+            <li><a target="_blank" asp-action="Products" asp-controller="Home" asp-route-id="Bread">麵包</a></li>
+            @if (SignInManager.IsSignedIn(User))
+            {
+        <li>
+            @*<a id="manage" class="nav_text" asp-area="Identity" asp-page="/Account/Manage/Index">@UserManager.GetUserName(User)</a>*@
+            <a id="manage" class="nav_text" asp-action="OrderDetails" asp-controller="Checkout">@UserManager.GetUserName(User)</a>                     
+        </li>
+                <li>
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button id="logout" type="submit" class="nav_btn_text">登出</button>
+                    </form>
+                </li>
+
+            }
+            else
+            {
+                <li>
+                    <a id="register" asp-area="Identity" asp-page="/Account/Register">註冊</a>
+                </li>
+                <li>
+                    <a id="login" asp-area="Identity" asp-page="/Account/Login">登入</a>
+                </li>
+            }           
+        </ul>
+        <a href="#" class="showmenu">
+            <img src="~/image/menu.png" alt="menu">
+        </a>
+    </div>
+    @RenderBody()
+    <div class="footer">
+        <h2>僅練習使用．不做商業用途</h2>
+    </div>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>    
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

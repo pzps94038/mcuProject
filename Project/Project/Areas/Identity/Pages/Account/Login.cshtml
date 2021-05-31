@@ -1,0 +1,47 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "登入";
+    Layout = "_SignUp";
+}
+<div class="wrap">
+    <div class="SignUp_wrap">        
+        <form id="account" method="post">
+            <h2 class="account_title">會員登入</h2>            
+            <hr />            
+            <div class="m-2 form-group">
+                <label asp-for="Input.Email" class="font-weight-bold SignUp_label"></label>
+                <input asp-for="Input.Email" class="form-control" style="font-family: FontAwesome;" placeholder='&#xf0e0; 請輸入電子郵件' />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="m-2 form-group">
+                <label asp-for="Input.Password" class="font-weight-bold SignUp_label"></label>
+                <input asp-for="Input.Password" style="font-family: FontAwesome;" class="form-control" placeholder="&#xf023; 請輸入密碼" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="m-2 form-group">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <div class="m-2 form-group">
+                <button type="submit" class="btn btn-info float-right  m-2">登入</button>
+            </div>
+            <div class="m-2 form-group">
+                @*<p>
+                <a id="forgot-password" asp-page="./ForgotPassword">忘記密碼?</a>
+            </p>*@
+                <p>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">建立一個新用戶</a>
+                </p>
+            </div>
+        </form>        
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

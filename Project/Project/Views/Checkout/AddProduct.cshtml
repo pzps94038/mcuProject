@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "新增商品";
+    Layout = "_AddProduct";
+}
+<div class="alert-primary alert_show">已送出成功</div>
+<div class="wrap">
+    <from asp-action="AddProduct" asp-controller="Checkout">
+        <h1 class="font-weight-bold" style="font-size:24px;">新增商品</h1>
+        <label for="productType" class="font-weight-normal" style="font-size:18px;">商品分類</label><br>
+        <select id="productType" name="productType">
+            <option value="Cake" name="Cake">蛋糕</option>
+            <option value="Dessert" name="Dessert">甜點</option>
+            <option value="Bread" name="Bread">麵包</option>
+        </select><br>
+        <label for="productName" class="font-weight-normal" style="font-size:18px;">商品名稱</label>
+        <input type="text" class="form-control" name="productName" style="font-family: FontAwesome;" id="productName" placeholder="&#xf129;請輸入產品名稱" required />
+        <div id="productImgShow">
+        </div>
+        <label for="productImg" class="font-weight-normal" style="font-size:18px;">圖片</label>
+        <input type="text" class="form-control" style="font-family: FontAwesome;" placeholder="&#xf03e;請輸入產品圖片網址" name="productImg" id="productImg" required />
+        <label for="productPrice" class="font-weight-normal" style="fon       t-size:18px;">產品金額</label>
+        <input type="number" name="name" class="form-control" style="font-family: FontAwesome;" placeholder="&#xf1c0;請輸入產品金額" id="productPrice" required />
+        <label for="productData" class="font-weight-normal" style="font-size:18px;">產品說明</label>
+        <textarea id="productData" name="productData" cols="100" class="form-control" style="font-family: FontAwesome;" placeholder="&#xf15b;請輸入產品說明" required /> </textarea>
+        <button type="submit" value="送出" id="addProduct" class="btn btn-block btn-info">新增</button>
+    </from>
+</div>

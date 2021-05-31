@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Project.Areas.Identity.Data
+@inject SignInManager<ProjectUser> SignInManager
+@inject UserManager<ProjectUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ico圖片 -->
+    <link rel="shortcut icon" href="~/image/blackCat.ico">
+    <!-- JQuery -->
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+    <!-- vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <!-- 字體 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Css -->
+    <link href="~/css/Products.css" rel="stylesheet" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body id="app">
+    <div class="header">
+        <a asp-action="index" asp-controller="Home">
+            <img src="https://upload.cc/i1/2021/04/29/nzI4rv.png" alt="logo">
+            <h1>CatBakery</h1>
+            <h2>@ViewData["Title"]</h2>
+        </a>
+        <a asp-action="Checkout" asp-controller="Checkout" class="cart">
+            <i class="fas fa-shopping-cart"></i><span id="cartAmount">{{cartstotal}}</span>
+        </a>
+    </div>
+    @RenderBody()
+    <div class="footer">
+        <h2>僅練習使用．不做商業用途</h2>
+    </div>
+    <script src="~/js/Products.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

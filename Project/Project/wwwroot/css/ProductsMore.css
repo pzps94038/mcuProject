@@ -1,0 +1,190 @@
+/* CssReset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+*, *::before, *::after {
+    box-sizing: border-box;       
+}
+/* cssreset */
+a{
+    text-decoration: none !important;
+}
+/* body */
+body {
+    background-color: #EFE9E7;    
+}
+/* 拿掉input樣式 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+/*header*/
+.header {
+    background: black;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.header a {
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    float:left;
+}
+.header a h1 {
+    padding-top: 5px;
+    font-size: 30px;
+    color: #FFFFFF;
+}
+.header a h2 {     
+    margin-left:5px;
+    padding-top: 10px;
+    font-size: 24px;
+    color: #FFFFFF;    
+}
+.header a img {
+    padding-left: 10px;
+    height: 50px;
+    padding-top: 8px;
+}
+/* cart */
+.cart{
+    margin-right: 30px;
+    color: white;
+    width: 40px;
+    font-size: 30px;
+    position: relative;
+}
+.cart:hover{
+    color: #888888;
+}
+.alert_cart{    
+    position: absolute;
+    text-align: center;
+    top:0;  
+    right: 0;    
+}
+.alert_cart_show{
+    display: none;
+}
+.btn_ensure:hover {
+    background-color: white;
+}
+#cartAmount{    
+    position: absolute;
+    right: 0;
+    top:0;  
+    margin-top: 6px;    
+    font-family: 'Kdam Thmor', cursive;
+    color: #fff;
+    background-color: #dc3545;
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;    
+    padding: .25em .4em;
+    font-size: 30%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;   
+}
+.cart:hover #cartAmount{
+    color: white;
+}
+/* wrap */
+.wrap{
+    padding-top: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Noto Sans TC', sans-serif;
+    min-height: 1000px;
+}
+/* product */
+.productName{
+    margin-left: 5px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    padding-top: 5%;
+    color: #3f0303;
+}
+.product_manual{
+    color: #3f0303;
+    margin-bottom: 20px;
+    font-size: 24px;    
+}
+.product_data{
+    margin-left: 5px;
+    min-height: 200px;
+    font-size: 15px;
+    width: 80%;    
+}
+.productImg {    
+    height:570px;
+}
+.productPrice {
+    color: black;
+    font-size: 20px;
+}
+.question{
+    color: #3f0303;
+    font-size: 24px;
+}
+.productAmount{
+    margin-right: 20px;
+}
+/* footer */
+.footer h2 {
+    text-align: center;
+    padding: 10px;
+    background-color: #3f0303;
+    color: white;
+}
